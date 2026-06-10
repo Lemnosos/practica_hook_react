@@ -1,25 +1,28 @@
-import './App.css'
-import { useReducer } from 'react'
-import { Formulario } from './components/Formulario'
-import { ListaTodos } from './components/ListaTodos'
-import { tareaReducer } from './hooks/tareaReducer'
+import { useTodoList } from './hooks/customHook'
 
 function App() {
 
-  const [todos, dispatch] = useReducer(tareaReducer, [])
+  const {
+    todos,
+    handleNewTodo,
+    handleDeleteTodo,
+    handleToggleTodo
+  } = useTodoList()
 
   return (
     <>
       <header></header>
-
       <main>
-        <Formulario dispatch={dispatch} />
-        <ListaTodos todos={todos} dispatch={dispatch} />
-      </main>
+        <Formulario onAdd={handleNewTodo} />
 
+        <ListaTodos
+          todos={todos}
+          onDelete={handleDeleteTodo}
+          onToggle={handleToggleTodo}
+        />
+      </main>
       <footer></footer>
     </>
+
   )
 }
-
-export default App

@@ -1,6 +1,6 @@
 import { Todo } from './Todo'
 
-export const ListaTodos = ({ todos, dispatch }) => {
+export const ListaTodos = ({ todos, onDelete, onToggle }) => {
 
     return (
         <div>
@@ -13,7 +13,8 @@ export const ListaTodos = ({ todos, dispatch }) => {
                     <Todo
                         key={tarea.id}
                         tarea={tarea}
-                        dispatch={dispatch}
+                        onDelete={onDelete}
+                        onToggle={onToggle}
                     />
                 ))
             )}

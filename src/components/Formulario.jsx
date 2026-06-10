@@ -1,4 +1,4 @@
-export const Formulario = ({ dispatch }) => {
+export const Formulario = ({ onAdd }) => {
 
     const handleSubmit = (ev) => {
         ev.preventDefault()
@@ -20,7 +20,7 @@ export const Formulario = ({ dispatch }) => {
             payload: tarea
         }
 
-        dispatch(accion)
+        onAdd(accion)
 
         ev.target.reset()
     }
