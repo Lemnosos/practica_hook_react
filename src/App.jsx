@@ -2,8 +2,6 @@ import './App.css'
 import { Formulario } from './components/Formulario'
 import { ListaTodos } from './components/ListaTodos'
 
-
-
 function App() {
 
   return (
@@ -12,7 +10,6 @@ function App() {
       <main>
 
         <Formulario />
-
         <ListaTodos />
 
       </main>
