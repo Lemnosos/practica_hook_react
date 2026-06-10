@@ -1,11 +1,4 @@
-import { useReducer } from 'react'
-import { tareaReducer } from '../hooks/tareaReducer'
-
-// tarea = { titulo, descripcion }
-
-export const Formulario = ({ onUpdate }) => {
-
-    const [todos, dispatch] = useReducer(tareaReducer, [])
+export const Formulario = ({ dispatch }) => {
 
     const handleSubmit = (ev) => {
         ev.preventDefault()
@@ -13,31 +6,42 @@ export const Formulario = ({ onUpdate }) => {
         const titulo = ev.target.titulo.value.trim()
         const descripcion = ev.target.descripcion.value.trim()
 
-        if (titulo.length < 1 || descripcion.length < 1) return
+        if (!titulo || !descripcion) return
 
         const tarea = {
             id: Date.now(),
             titulo,
-            descripcion
+            descripcion,
+            estado: false
         }
 
-        const action = {
-            type: 'anadir tarea',
+        const accion = {
+            type: 'ADD_TAREA',
             payload: tarea
         }
 
-        dispatch(action)
+        dispatch(accion)
 
+        ev.target.reset()
     }
-    console.log(todos)
+
     return (
         <>
             <h2>Añadir tarea</h2>
 
             <form onSubmit={handleSubmit}>
-                <input type="text" name="titulo" id="titulo" placeholder='Titulo de la tarea' />
-                <textarea name="descripcion" id="descripcion" placeholder='Descripcion de la tarea'></textarea>
-                <input type="submit" value='Añadir' />
+                <input
+                    type="text"
+                    name="titulo"
+                    placeholder="Titulo de la tarea"
+                />
+
+                <textarea
+                    name="descripcion"
+                    placeholder="Descripcion de la tarea"
+                />
+
+                <input type="submit" value="Añadir" />
             </form>
         </>
     )

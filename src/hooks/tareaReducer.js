@@ -1,20 +1,21 @@
-export const tareaReducer = (state = [], action) => {
-
-    console.log({ action })
+export const tareaReducer = (state, action) => {
 
     switch (action.type) {
 
-        case 'anadir tarea':
+        case 'ADD_TAREA':
             return [...state, action.payload]
 
-        case 'borrar todo':
-            console.log(action.payload)
-            const newState = state.filter(todo => todo.id != action.payload)
-            return newState
+        case 'DELETE_TAREA':
+            return state.filter(todo => todo.id !== action.payload)
+
+        case 'TOGGLE_TAREA':
+            return state.map(todo =>
+                todo.id === action.payload
+                    ? { ...todo, estado: !todo.estado }
+                    : todo
+            )
 
         default:
             return state
-
     }
-
 }

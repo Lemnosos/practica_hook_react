@@ -1,12 +1,27 @@
+export const Todo = ({ tarea, dispatch }) => {
 
-// tarea = { titulo, descripcion }
+    const handleDelete = (ev) => {
+        dispatch({
+            type: 'DELETE_TAREA',
+            payload: tarea.id
+        })
+    }
 
-export const Todo = ({ tarea }) => {
+    const handleToggle = (ev) => {
+        dispatch({
+            type: 'TOGGLE_TAREA',
+            payload: tarea.id
+        })
+    }
 
     return (
         <div>
-            <h3>{tarea.titulo}</h3>
-            <h3>{tarea.descripcion}</h3>
+            <h3>Titulo: {tarea.titulo}</h3>
+            <p>Descripcion: {tarea.descripcion}</p>
+            <p>{tarea.estado ? "Completada" : "Pendiente"}</p>
+
+            <button onClick={handleDelete}>Borrar</button>
+            <button onClick={handleToggle}>Estado</button>
         </div>
     )
 }
