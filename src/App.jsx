@@ -1,6 +1,8 @@
+import { Formulario } from './components/Formulario'
+import { ListaTodos } from './components/ListaTodos'
 import { useTodoList } from './hooks/customHook'
 
-function App() {
+export function App() {
 
   const {
     todos,

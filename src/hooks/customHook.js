@@ -1,7 +1,7 @@
 import { useReducer, useEffect } from 'react'
-import { tareaReducer } from './tareaReducer'
+import { tareaReducer } from '../reducers/tareaReducer'
 
-// 🔹 Cargar desde localStorage
+//Cargar desde localStorage
 const init = () => {
     const storedTodos = localStorage.getItem('todos')
     return storedTodos ? JSON.parse(storedTodos) : []

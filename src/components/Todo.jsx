@@ -2,6 +2,7 @@ export const Todo = ({ tarea, onDelete, onToggle }) => {
 
     return (
         <div>
+            <p>{JSON.stringify(tarea)}</p>
             <h3>{tarea.titulo}</h3>
 
             <p>{tarea.descripcion}</p>

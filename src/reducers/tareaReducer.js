@@ -1,4 +1,4 @@
-export const tareaReducer = (state, action) => {
+export const tareaReducer = (state = [], action) => {
 
     switch (action.type) {
 
@@ -10,7 +10,7 @@ export const tareaReducer = (state, action) => {
 
         case 'TOGGLE_TAREA':
             return state.map(todo =>
-                todo.id === action.payload
+                (todo.id === action.payload)
                     ? { ...todo, estado: !todo.estado }
                     : todo
             )
